@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>PetMakeAppointment</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta2/css/bootstrap-grid.min.css">
+        <style>
+            form :focus:required:invalid{
+                border-color: #a94442
+            }
+        </style>
+    </head>
+    <body class="container">
+        <header>
+            <h1>Make Appointment</h1>
+        </header>
+        <section>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form data-pet-appointment="form">
+
+                        <div class="form-group">
+                            <label for ="PetName">Pet Name</label>
+                            <input class="form-control" name="pet" id="PetName" value="Tank" disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <label for ="Location">Meet up Location</label>
+                            <input class="form-control" name="location" id="Location" value = "1234 1st Street Los Angelas CA 92000" disabled>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="AvailableDate">Available Date</label>
+                            <select id="AvailableDate" class="form-control" name="date">
+                                <option value="04/04/2021" selected>Monday April 4th</option>
+                                <option value="04/05/2021" disabled hidden>Tuesday April 5th</option>
+                                <option value="04/06/2021">Wednesday April 6th</option>
+                                <option value="04/07/2021">Thursday April 7th</option>
+                                <option value="04/08/2021">Friday April 8th</option>
+                                <option value="04/09/2021">Saturday April 9th</option>
+                                <option value="04/10/2021">Sunday April 10th</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="AvailableTime">Available Time</label>
+                            <select id="AvailableTime" class="form-control" name="time">
+                                <option value="10:00 AM" selected>10:00 AM PDT</option>
+                                <option value="11:00 AM" disabled hidden>11:00 AM PDT</option>
+                                <option value="12:00 AM">12:00 PM PDT</option>
+                                <option value="1:00 PM">1:00 PM PDT</option>
+                                <option value="2:00 PM">2:00 PM PDT</option>
+                                <option value="3:00 PM">3:00 PM PDT</option>
+                                <option value="4:00 PM">4:00 PM PDT</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-default">Submit</button>
+                        <button type="reset" class="btn btn-default">Reset</button>
+
+                    </form>
+                </div>
+            </div>
+
+        </section>  
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>        
+        <script src="/__/firebase/8.3.2/firebase-app.js"></script>
+        <script src="/__/firebase/8.3.2/firebase-firestore.js"></script>
+        <script src="/__/firebase/init.js"></script>
+    </body>
+</html>
