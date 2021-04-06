@@ -1,0 +1,53 @@
+<!doctype html>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <title>coffeerun</title>
+          <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">-->
+            <style>
+                form :focus:required:invalid {
+                border-color: #a94442;
+                }
+                </style>
+                
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+            <link  rel="stylesheet" href="styles/signup-form.css">
+        </head>
+    <body class="container">
+    <span class="BOX">
+        <form action="/action_page.php" style="border:1px solid #ccc">
+            <div class="container">
+                <h1>Sign-up</h1>
+                <hr>
+                <div>
+                    <label for="emailInput"><b>Email</b></label>
+                    <input type="email" placeholder="Enter Email" name="emailAddress" value="" required>
+                </div>
+                <div>
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" id="password" required>
+                </div>
+                <div>
+                    <label for="conf-psw"><b>Confirm Password</b></label>
+                    <input type="password" placeholder="Confirm Password" id="confirm_password" name="conf-psw" required>
+                </div>
+                <div class="clearfix">
+                    <button type="submit" class="signupbtn">Sign Up</button>
+                </div>
+                <hr>
+                <p> Already have an account?  <a href="login.html" style="color:blue">Log-in</a></p>
+
+            
+    </span>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"charset="utf-8"></script>
+    <script src="scripts/checkpassword.js" charset="utf-8"></script>
+
+    <script src="scripts/validation.js" charset="utf-8"></script>
+    <script src="scripts/formhandler.js" charset="utf-8"></script>
+    <script src="scripts/remotedatastore.js" charset="utf-8"></script>
+    <script src="scripts/datastore.js" charset="utf-8"></script>
+    <script src="scripts/main.js" charset="utf-8"></script>
+
+    </body>
+</html>
