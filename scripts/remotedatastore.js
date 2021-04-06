@@ -37,10 +37,9 @@
             });
         }
 
-        setUser(key, name, url) {
-            var val = {'fields': {'name': {'stringValue': name}, 'image': {'stringValue': url}}};
+        setNewUser(key) {
             $.ajax({ type: 'POST', url: this.serverURL + '/projects/project1-d755b/databases/(default)/documents/users?documentId=' + key, contentType: 'application/json',
-                data: JSON.stringify(val), success: function(response) { 
+                success: function(response) { 
                     console.log('function returned: ' + JSON.stringify(response));
                 },
                 error: function(error) {
@@ -49,13 +48,31 @@
             });
         }
 
-        getUser(key) {
-            $.ajax({ type: 'GET', url: this.serverURL + '/projects/project1-d755b/databases/(default)/documents/users' + '/' + key, contentType: 'application/json',
-                success: function(response) { 
+        setUser(key, data) {
+            console.log(data);
+            $.ajax({ type: 'PATCH', url: this.serverURL + '/projects/project1-d755b/databases/(default)/documents/users/' + key, contentType: 'application/json',
+                data: JSON.stringify(data), success: function(response) { 
                     console.log('function returned: ' + JSON.stringify(response));
                 },
                 error: function(error) {
                     console.log(error);
+                }
+            });
+        }
+
+        getUser(key, cb) {
+            $.ajax({ type: 'GET', url: this.serverURL + '/projects/project1-d755b/databases/(default)/documents/users' + '/' + key, contentType: 'application/json',
+                success: function(response) { 
+                    console.log('function returned: ' + JSON.stringify(response));
+                    if (cb !== undefined) { 
+                        cb(response); 
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
+                    if (cb !== undefined) { 
+                        cb(error); 
+                    }
                 }
             });
         }

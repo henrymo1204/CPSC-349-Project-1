@@ -1,18 +1,18 @@
 (function (window) {
     'use strict';
-    var LIST_SELECTOR = '[data-play-dates="list"]';
+    var FORM_SELECTOR = '[data-pet-owner="form"]';
     var SERVER_URL = 'https://firestore.googleapis.com/v1';
-    document.cookie = 'key=hg5XEcZubvcCQvPnl6MhWB5vTln2';
-    var KEY = document.cookie.substring(3);
     var App = window.App;
     var RemoteDataStore = App.RemoteDataStore;
+    var FormHandler = App.FormHandler;
     var Account = App.Account;
-    var List = App.List;
     var remoteDS = new RemoteDataStore(SERVER_URL);
     var account = new Account(remoteDS);
-    var list = new List(LIST_SELECTOR);
-    account.listPlayDates(KEY, function(data) {
-        list.init.call(list, data);
+    var formHandler = new FormHandler(FORM_SELECTOR);
+    formHandler.addSubmitHandler(function(data) {
+        account.signUp(data);
     });
+    console.log(formHandler);
+
 
 })(window);

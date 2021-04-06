@@ -14,14 +14,38 @@ GET {{baseUrl}}/users/ HTTP/1.1
 
 ###
 
+POST https://firebasestorage.googleapis.com/v0/b/project1-d755b.appspot.com/o/blades.jpg HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "blades.jpg",
+  "bucket": "project1-d755b.appspot.com",
+  "generation": "1617680620361957",
+  "metageneration": "1",
+  "contentType": "image/jpeg",
+  "timeCreated": "2021-04-06T03:43:40.381Z",
+  "updated": "2021-04-06T03:43:40.381Z",
+  "storageClass": "STANDARD",
+  "size": "172308",
+  "md5Hash": "DCerFHKf7WH81VZQB5jPAw==",
+  "contentEncoding": "identity",
+  "contentDisposition": "inline; filename*=utf-8''blades.jpg",
+  "crc32c": "8vtVug==",
+  "etag": "COWx8vXZ6O8CEAE=",
+  "downloadTokens": "f1afb629-0eb5-4127-a247-74a498fd9950"
+}
+
+
+###
+
 # add new order for triple espresso
-POST {{baseUrl}}/users/hg5XEcZubvcCQvPnl6MhWB5vTln2/appointments?documentId=EUe3wzOcEbAjeSAUEOd0 HTTP/1.1
+PATCH {{baseUrl}}/users/hg5XEcZubvcCQvPnl6MhWB5vTln2 HTTP/1.1
 content-type: application/json
 
 {
     "fields": {
-        "time": {
-          "timestampValue": "2021-04-24T21:00:00Z"
+        "user_name": {
+            "stringValue": "Calvin"
         }
     }
 }

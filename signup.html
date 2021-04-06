@@ -16,13 +16,13 @@
         </head>
     <body class="container">
     <span class="BOX">
-        <form action="/action_page.php" style="border:1px solid #ccc">
+        <form data-pet-owner="form" style="border:1px solid #ccc">
             <div class="container">
                 <h1>Sign-up</h1>
                 <hr>
                 <div>
                     <label for="emailInput"><b>Email</b></label>
-                    <input type="email" placeholder="Enter Email" name="emailAddress" value="" required>
+                    <input type="email" placeholder="Enter Email" name="emailAddress" id='emailAddress' value="" required>
                 </div>
                 <div>
                     <label for="psw"><b>Password</b></label>
@@ -42,12 +42,9 @@
     </span>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"charset="utf-8"></script>
     <script src="scripts/checkpassword.js" charset="utf-8"></script>
-
-    <script src="scripts/validation.js" charset="utf-8"></script>
+    <script src="scripts/remotedatastore.js" chraset="utf-8"></script>
     <script src="scripts/formhandler.js" charset="utf-8"></script>
-    <script src="scripts/remotedatastore.js" charset="utf-8"></script>
-    <script src="scripts/datastore.js" charset="utf-8"></script>
-    <script src="scripts/main.js" charset="utf-8"></script>
-
+    <script src="scripts/account.js" charset="utf-8"></script>
+    <script src="scripts/signup.js" charset="utf-8"></script>
     </body>
 </html>

@@ -21,10 +21,10 @@
         </nav>
         <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Account Information</a>
+              <a class="nav-link active" href="userAccount.html">Account Information</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Play Date History</a>
+              <a class="nav-link" href="history.html">Play Date History</a>
             </li>
         </ul>
         <header>
@@ -33,19 +33,20 @@
         <section>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    
-                    <form id="image-form" action="#">
-                        <label for ="Pet Image">Pet Image</label>
-                        <input id="mediaCapture" type="file" accept="image/*" capture="camera">
-
-                        <!--
-                        <button id="submitImage" title="Add an image" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--amber-400 mdl-color-text--white">
-                          <i class="material-icons">image</i>
-                        </button> -->
-                      </form>
             
 
                     <form data-pet-owner="form">
+
+                        <div class="form-group">
+                            <label for ="Pet Image">Pet Image</label>
+                            <input id="mediaCapture" name="picture" type="file" accept="image/*" capture="camera" onchange="readURL(this)">
+                            <img id="blah" src="#" alt="your image" />
+    
+                            <!--
+                            <button id="submitImage" title="Add an image" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--amber-400 mdl-color-text--white">
+                              <i class="material-icons">image</i>
+                            </button> -->
+                        </div>
 
                         <div class="form-group">
                             <label for ="Account Number">Account Number</label>
@@ -54,22 +55,17 @@
 
                         <div class="form-group">
                             <label for ="User Name">User Name</label>
-                            <input class="form-control" name="user" id="UserName" autofocus required pattern="[a-zA-Z\s]+"/>
+                            <input class="form-control" name="user_name" id="UserName" autofocus required pattern="[a-zA-Z\s]+"/>
                         </div>
 
                         <div class="form-group">
                             <label for ="PetName">Pet Name</label>
-                            <input class="form-control" name="pet" id="PetName" autofocus required pattern="[a-zA-Z\s]+"/>
-                        </div>
-
-                        <div class="form-group">
-                            <label for ="emailInput">Email</label>
-                            <input class="form-control" type="email" name="emailAddress" id="EmailInput" required>
+                            <input class="form-control" name="pet_name" id="PetName" autofocus required pattern="[a-zA-Z\s]+"/>
                         </div>
 
                         <div class="form-group">
                             <label for ="phoneNumber">Phone Number</label>
-                            <input class="form-control" name="phone" id="PhoneNumber">
+                            <input class="form-control" name="phone_number" id="PhoneNumber">
                         </div>
 
                         <div class="form-group">
@@ -79,7 +75,7 @@
 
                         <div class="form-group">
                             <label for="AvailableDate">Available Date</label>
-                            <input type="date" id="AvailableDate" name="AvailableDate">
+                            <input type="date" id="AvailableDate" name="available_date">
                         </div>
 
                         <div class="form-group">
@@ -103,19 +99,67 @@
             </div>
 
         </section>  
-        
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-storage.js"></script>
+        <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyB7gYphY-KI0365iPlSfniI0U6uyb8lUcg",
+            authDomain: "project1-d755b.firebaseapp.com",
+            databaseURL: "https://project1-d755b-default-rtdb.firebaseio.com",
+            projectId: "project1-d755b",
+            storageBucket: "project1-d755b.appspot.com",
+            messagingSenderId: "78036485735",
+            appId: "1:78036485735:web:4512e85d19b9b41cadf6c2",
+            measurementId: "G-EMP5CX9EXP"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+
+        var cookie = document.cookie.split(';');
+        for (let i in cookie) {
+            if (cookie[i].includes('key=')) {
+                var index = cookie[i].lastIndexOf('=');
+                var KEY = cookie[i].substring(index + 1);
+                break;
+            }
+        }
+        // var fileButton = document.getElementById('mediaCapture');
+        // fileButton.addEventListener('change', function(e){
+        //     var file = e.target.files[0];
+        //     var storageRef = firebase.storage().ref(KEY);
+        //     var task = storageRef.put(file);
+        // });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width(200);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        </script>
+        </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
-        <!--
-        <script src="scripts/validation.js" charset="utf-8"></script>
-        <script src="scripts/checklist.js" charset="utf-8"></script>
-        <script src="scripts/formhandler.js" charset="utf-8"></script>
+        <script src="scripts/account.js" charset="utf-8"></script>
         <script src="scripts/remotedatastore.js" charset="utf-8"></script>
-        <script src="scripts/datastore.js" charset="utf-8"></script>
-        <script src="scripts/truck.js" charset="utf-8"></script>
-        <script src="scripts/main.js" charset="utf-8"></script>-->
-        
-        <script src="/__/firebase/8.3.2/firebase-app.js"></script>
-        <script src="/__/firebase/8.3.2/firebase-firestore.js"></script>
-        <script src="/__/firebase/init.js"></script>
+        <script src="scripts/formhandler.js" charset="utf-8"></script>
+        <script src="scripts/userAccount.js" charset="utf-8"></script>
     </body>
 </html>
