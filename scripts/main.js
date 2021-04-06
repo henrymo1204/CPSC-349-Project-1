@@ -9,8 +9,8 @@
     var remoteDS = new RemoteDataStore(SERVER_URL);
     var account = new Account(remoteDS);
     var list = new List(LIST_SELECTOR);
-    account.listPlayDates(KEY, function(data) {
-        list.init.call(list, data);
+    account.listPictures(KEY, function(data) {
+        list.pictures.call(list, data);
     });
 
 })(window);

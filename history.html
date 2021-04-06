@@ -4,10 +4,10 @@
     </head>
     <body>
         <nav class="navbar navbar-light justify-content-between" style="background-color: #e3f2fd;">
-            <a class="navbar-brand" href="#">Home</a>
+            <a class="navbar-brand" href="main.html">Home</a>
             <form class="form-inline">
                 <button class="btn btn-outline-success mr-sm-2" type="submit">Sign Up</button>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log In</button>
             </form>
         </nav>
         <ul class="nav nav-tabs">
@@ -27,6 +27,16 @@
                 </div>
             </div>
         </div>
+        <script>
+            var cookie = document.cookie.split(';');
+            for (let i in cookie) {
+                if (cookie[i].includes('key=')) {
+                    var index = cookie[i].lastIndexOf('=');
+                    var KEY = cookie[i].substring(index + 1);
+                    break;
+                }
+            }
+        </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>
         <script src='/scripts/list.js'></script>
         <script src='/scripts/remotedatastore.js'></script>

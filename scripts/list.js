@@ -42,6 +42,47 @@
         this.$element = $div;
     }
 
+    List.prototype.pictures = function(pictures) {
+        for (let i in pictures) {
+            var picture = new Picture(pictures[i]);
+            this.$element.append(picture.$element);
+        }
+    }
+
+    function Picture(key) {
+        var storageRef = firebase.storage().ref();
+        var $div = $('<div></div>', {
+            'data-play-dates': 'img', class: 'img'
+        });
+        storageRef.child(key).getDownloadURL()
+            .then((url) => {
+                // `url` is the download URL for 'images/stars.jpg'
+
+                // This can be downloaded directly:
+                var xhr = new XMLHttpRequest();
+                xhr.responseType = 'blob';
+                xhr.onload = (event) => {
+                var blob = xhr.response;
+                };
+                xhr.open('GET', url);
+
+                // Or inserted into an <img> element
+
+                var $img = $('<img></img>', {
+                    id: key, 
+                    src: url,
+                    onClick: 'openReservation(this)'
+                });
+
+                $div.append($img);
+
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        this.$element = $div;
+    }
+
     App.List = List;
     window.App = App;
 

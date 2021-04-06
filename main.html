@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <nav class="navbar navbar-light justify-content-between" style="background-color: #e3f2fd;">
+            <a class="navbar-brand" href="#">Home</a>
+            <form class="form-inline">
+                <button class="btn btn-outline-success mr-sm-2" type="submit" href="signup.html">Sign Up</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" href="login.html">Log In</button>
+            </form>
+        </nav>
+            <div data-play-dates="list"></div>
+        </div>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-storage.js"></script>
+        <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyB7gYphY-KI0365iPlSfniI0U6uyb8lUcg",
+            authDomain: "project1-d755b.firebaseapp.com",
+            databaseURL: "https://project1-d755b-default-rtdb.firebaseio.com",
+            projectId: "project1-d755b",
+            storageBucket: "project1-d755b.appspot.com",
+            messagingSenderId: "78036485735",
+            appId: "1:78036485735:web:4512e85d19b9b41cadf6c2",
+            measurementId: "G-EMP5CX9EXP"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        </script>
+
+        <script>
+            var cookie = document.cookie.split(';');
+            for (let i in cookie) {
+                if (cookie[i].includes('key=')) {
+                    var index = cookie[i].lastIndexOf('=');
+                    var KEY = cookie[i].substring(index + 1);
+                    break;
+                }
+            }
+        </script>
+        <script>
+            function openReservation(input){
+                document.cookie = 'pictureKey=' + input.id;
+                window.open('index.html', 'popUpWindow', 'height=500, width=350');
+            }
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>
+        <script src='/scripts/list.js'></script>
+        <script src='/scripts/remotedatastore.js'></script>
+        <script src='/scripts/account.js'></script>
+        <script src='/scripts/main.js'></script>
+    </body>
+</html>

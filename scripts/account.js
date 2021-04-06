@@ -11,6 +11,7 @@
     };
 
     Account.prototype.getUserInfo = function(key, fn) {
+        console.log(key);
         this.db.getUser(key, fn);
     }
 
@@ -102,6 +103,82 @@
 
     Account.prototype.signUp = function(data) {
         this.db.signup(data);
+    }
+
+    Account.prototype.logIn = function(data) {
+        this.db.login(data);
+    }
+
+    Account.prototype.listPictures = function(key, fn) {
+        this.db.getAll(key, fn);
+    }
+
+    Account.prototype.setAppointmentInfo = function(info) {
+        if('pet_name' in info['fields']) {
+            var pet_name = document.getElementById('PetName');
+            pet_name.value = info['fields']['pet_name']['stringValue'];
+        }
+        if('location' in info['fields']) {
+            var location = document.getElementById('Location');
+            location.value = info['fields']['location']['stringValue'];
+        }
+        if('available_date' in info['fields']) {
+            var available_date = document.getElementById('AvailableDate');
+            available_date.value = info['fields']['available_date']['stringValue'];
+        }
+        var select = document.getElementById('AvailableTime');
+        if(info['fields']['10']['booleanValue'] === true) {
+            var time1 = document.createElement('option');
+            time1.textContent = '10:00AM';
+            time1.value = '10:00AM';
+            select.appendChild(time1);
+        }
+        if(info['fields']['11']['booleanValue'] === true) {
+            var time2 = document.createElement('option');
+            time2.textContent = '11:00AM';
+            time2.value = '11:00AM';
+            select.appendChild(time2);
+        }
+        if(info['fields']['12']['booleanValue'] === true) {
+             var time3 = document.createElement('option');
+            time3.textContent = '12:00AM';
+            time3.value = '12:00AM';
+            select.appendChild(time3);
+        }
+        if(info['fields']['13']['booleanValue'] === true) {
+            var time4 = document.createElement('option');
+            time4.textContent = '01:00PM';
+            time4.value = '01:00PM';
+            select.appendChild(time4);
+        }
+        if(info['fields']['14']['booleanValue'] === true) {
+            var time5 = document.createElement('option');
+            time5.textContent = '02:00PM';
+            time5.value = '02:00PM';
+            select.appendChild(time5);
+        }
+        if(info['fields']['15']['booleanValue'] === true) {
+            var time6 = document.createElement('option');
+            time6.textContent = '03:00PM';
+            time6.value = '03:00PM';
+            select.appendChild(time6);
+        }
+        if(info['fields']['16']['booleanValue'] === true) {
+            var time7 = document.createElement('option');
+            time7.textContent = '04:00PM';
+            time7.value = '04:00PM';
+            select.appendChild(time7);
+        }
+        if(info['fields']['17']['booleanValue'] === true) {
+            var time8 = document.createElement('option');
+            time8.textContent = '05:00PM';
+            time8.value = '05:00PM';
+            select.appendChild(time8);
+        }
+    }
+
+    Account.prototype.setAppointment = function(key, pictureKey, data) {
+        this.db.setAppointment(key, pictureKey, data);
     }
 
     App.Account = Account;
