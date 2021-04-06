@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <nav class="navbar navbar-light justify-content-between" style="background-color: #e3f2fd;">
+            <a class="navbar-brand" href="#">Home</a>
+            <form class="form-inline">
+                <button class="btn btn-outline-success mr-sm-2" type="submit">Sign Up</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </nav>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Account Information</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Play Date History</a>
+            </li>
+        </ul>
+        <div class="pannel pannel">
+            <div class="panel-body">
+                <form>
+                    <h1>Play Dates:</h1>
+                    <div data-play-dates="list">
+                </form>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>
+        <script src='list.js'></script>
+        <script src='remotedatastore.js'></script>
+        <script src='account.js'></script>
+        <script src='history.js'></script>
+    </body>
+</html>

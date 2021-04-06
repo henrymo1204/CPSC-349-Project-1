@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Account</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta2/css/bootstrap-grid.min.css">
         <style>
             form :focus:required:invalid{
@@ -11,6 +12,21 @@
         </style>
     </head>
     <body class="container_user">
+        <nav class="navbar navbar-light justify-content-between" style="background-color: #e3f2fd;">
+            <a class="navbar-brand" href="#">Home</a>
+            <form class="form-inline">
+                <button class="btn btn-outline-success mr-sm-2" type="submit">Sign Up</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </nav>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Account Information</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Play Date History</a>
+            </li>
+        </ul>
         <header>
             <h1>Account Information</h1>
         </header>
@@ -33,32 +49,32 @@
 
                         <div class="form-group">
                             <label for ="Account Number">Account Number</label>
-                            <input class="form-control" name="account" id="AccountNumber" value="001" disabled/>
+                            <input class="form-control" name="account" id="AccountNumber" disabled/>
                         </div>
 
                         <div class="form-group">
                             <label for ="User Name">User Name</label>
-                            <input class="form-control" name="user" id="UserName" value="Anna"  autofocus required pattern="[a-zA-Z\s]+"/>
+                            <input class="form-control" name="user" id="UserName" autofocus required pattern="[a-zA-Z\s]+"/>
                         </div>
 
                         <div class="form-group">
                             <label for ="PetName">Pet Name</label>
-                            <input class="form-control" name="pet" id="PetName" value="Tank" autofocus required pattern="[a-zA-Z\s]+"/>
+                            <input class="form-control" name="pet" id="PetName" autofocus required pattern="[a-zA-Z\s]+"/>
                         </div>
 
                         <div class="form-group">
                             <label for ="emailInput">Email</label>
-                            <input class="form-control" type="email" name="emailAddress" id="EmailInput" value = "dr@who.com" placeholder="dr@who.com" required>
+                            <input class="form-control" type="email" name="emailAddress" id="EmailInput" required>
                         </div>
 
                         <div class="form-group">
                             <label for ="phoneNumber">Phone Number</label>
-                            <input class="form-control" name="phone" id="PhoneNumber" value = "6261112222">
+                            <input class="form-control" name="phone" id="PhoneNumber">
                         </div>
 
                         <div class="form-group">
                             <label for ="Location">Meet up Location</label>
-                            <input class="form-control" name="location" id="Location" value = "1234 1st Street Los Angelas CA 92000">
+                            <input class="form-control" name="location" id="Location">
                         </div>
 
                         <div class="form-group">

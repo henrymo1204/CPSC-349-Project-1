@@ -1,0 +1,211 @@
+// install the "REST Client" extension in VSCode.
+@baseUrl={{$dotenv baseUrl}}
+
+
+###
+
+# deletes all the orders from the collection
+DELETE {{baseUrl}}/orders HTTP/1.1
+
+###
+
+# get all orders
+GET {{baseUrl}}/users/ HTTP/1.1
+
+###
+
+# add new order for triple espresso
+POST {{baseUrl}}/users/hg5XEcZubvcCQvPnl6MhWB5vTln2/appointments?documentId=EUe3wzOcEbAjeSAUEOd0 HTTP/1.1
+content-type: application/json
+
+{
+    "fields": {
+        "time": {
+          "timestampValue": "2021-04-24T21:00:00Z"
+        }
+    }
+}
+
+###
+POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyB7gYphY-KI0365iPlSfniI0U6uyb8lUcg HTTP/1.1
+Content-type: application/json
+
+{
+    "email": "henrymo1204@gmail.com",
+    "password": "henrymo",
+    "returnSecureToken": true
+}
+
+###
+POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/getAccountInfo?key=AIzaSyB7gYphY-KI0365iPlSfniI0U6uyb8lUcg HTTP/1.1
+Content-Type: application/json
+
+{
+    "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjhkOGM3OTdlMDQ5YWFkZWViOWM5M2RiZGU3ZDAwMzJmNjk3NjYwYmQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcHJvamVjdDEtZDc1NWIiLCJhdWQiOiJwcm9qZWN0MS1kNzU1YiIsImF1dGhfdGltZSI6MTYxNzQwMTM4NSwidXNlcl9pZCI6InRkUDBLRkRFOGpZT0QwRzFZZk93NXgxMkx6aTIiLCJzdWIiOiJ0ZFAwS0ZERThqWU9EMEcxWWZPdzV4MTJMemkyIiwiaWF0IjoxNjE3NDAxMzg1LCJleHAiOjE2MTc0MDQ5ODUsImVtYWlsIjoiaGVucnltbzEyMDRAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImhlbnJ5bW8xMjA0QGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.RZzkt9SeNU8zM3cWUIzfHFap9QSCWdNcAP360lGbDS7Yh6-mMXoS10CY5kn5BVj5rLHBoYMW6jLbHTJUtkzqROrvd5EQDJONehXYn6qzzYNXJ-fxiZYWoW4CYyC73wNdQoIV-63eRh99iXlIep4khEvzyt90QyO6swYmAwGdhbYRDL2ZnxI3F1IcskHioXtZTNJ5WvLlOVqUpoQ1nNjaUmha3T8Yh4V3n5O0ydeFGFfcEJRyMkh25BzNpzmSBA3sB7-SW-um2MjjMHIbzjmSmmq-PAGyQCO0NJ0ZpqY259w9MM6WawJ2yXrw9Fkg8afm0X4mGyjIwnADFt4wxbResg"
+}
+
+
+###
+POST {{baseUrl}}/users?documentId=tdP0KFDE8jYOD0G1YfOw5x12Lzi2 HTTP/1.1
+Content-Type: application/json
+
+{
+    "fields": {
+        "pet_name": {
+            "stringValue": "dog"
+        },
+        "image": {
+            "stringValue": "https://images.dog.ceo/breeds/schnauzer-miniature/n02097047_2634.jpg"
+        }
+    }
+}
+
+###
+
+POST {{baseUrl}}/users/tvwfCdn1azFImlUbhFr9/login HTTP/1.1
+content-type: application/json
+
+{
+    "fields": {
+        "username": {
+            "stringValue": "testing"
+        },
+        "password": {
+            "stringValue": "testing"
+        }
+    }
+}
+
+###
+
+# add new order for espresso
+POST {{baseUrl}}/coffeeorders HTTP/1.1
+content-type: application/json
+
+{
+    "coffee": "earl grey",
+    "emailAddress": "jlpicard@starfleet.com",
+    "flavor": "",
+    "strength": "90"
+}
+
+###
+
+# add new order for triple espresso
+POST {{baseUrl}}/coffeeorders HTTP/1.1
+content-type: application/json
+
+{
+    "coffee": "americano",
+    "emailAddress": "wmccarthy@fullerton.edu",
+    "flavor": "None",
+    "strength": "100"
+}
+
+###
+
+# add new order for espresso
+POST {{baseUrl}}/coffeeorders HTTP/1.1
+content-type: application/json
+
+{
+    "coffee": "espresso",
+    "emailAddress": "aeinstein@aol.com",
+    "flavor": "Mocha",
+    "strength": "80"
+}
+
+###
+
+# add new order for americano
+POST {{baseUrl}}/coffeeorders HTTP/1.1
+content-type: application/json
+
+{
+    "coffee": "americano",
+    "emailAddress": "sjobs@apple.com",
+    "flavor": "Caramel",
+    "strength": "60"
+}
+
+###
+
+# add new order for earl grey
+POST {{baseUrl}}/coffeeorders HTTP/1.1
+content-type: application/json
+
+{
+    "coffee": "earl grey",
+    "emailAddress": "jlpicard@starfleet.com",
+    "flavor": "None",
+    "strength": "80"
+}
+
+###
+
+# get all orders
+GET {{baseUrl}}/coffeeorders HTTP/1.1
+
+###
+
+# get any order from audstanley@gmail.com
+
+GET {{baseUrl}}/coffeeorders/audstanley@gmail.com HTTP/1.1
+
+###
+
+# get any order from sjobs@apple.com
+
+GET {{baseUrl}}/coffeeorders/sjobs@apple.com HTTP/1.1
+
+###
+
+# get any order from jbezos@amazon.com (should be none)
+
+GET {{baseUrl}}/coffeeorders/jbezos@amazon.com HTTP/1.1
+
+###
+
+# update flavor for jlpicard@starfleet.com's order
+PUT {{baseUrl}}/coffeeorders/jlpicard@starfleet.com HTTP/1.1
+content-type: application/json
+
+{
+    "coffee": "earl grey",
+    "emailAddress": "jlpicard@starfleet.com",
+    "flavor": "Vanilla",
+    "strength": "80"
+}
+
+###
+
+# update coffee and flavor for audstanley@gmail.com's order
+PUT {{baseUrl}}/coffeeorders/audstanley@gmail.com HTTP/1.1
+content-type: application/json
+
+{
+    "coffee": "double espresso",
+    "emailAddress": "audstanley@gmail.com",
+    "flavor": "Mocha",
+    "strength": "100"
+}
+
+###
+
+# get all orders
+GET {{baseUrl}}/coffeeorders HTTP/1.1
+
+###
+
+# only delete jlpicard@starfleet.com's last order
+DELETE {{baseUrl}}/coffeeorders/jlpicard@starfleet.com HTTP/1.1
+
+###
+
+# only delete jlpicard@starfleet.com's last order
+DELETE {{baseUrl}}/coffeeorders/audstanley@gmail.com HTTP/1.1
+
+###
+
+# get all orders
+GET {{baseUrl}}/coffeeorders HTTP/1.1
