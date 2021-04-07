@@ -141,6 +141,7 @@
                         .then((doc1) => {
                             if (doc1.exists) {
                                 this.db.collection('users').doc(targetKey).collection('appointments').add({
+                                    user_id: key,
                                     user_name: doc1.data()['user_name'],
                                     phone_number: doc1.data()['phone_number'],
                                     pet_name: val['pet_name'],
@@ -159,6 +160,7 @@
                                         .then((doc2) => {
                                             if (doc2.exists) {
                                                 this.db.collection('users').doc(key).collection('appointments').doc(response.id).set({
+                                                    user_id: targetKey,
                                                     user_name: doc2.data()['user_name'],
                                                     phone_number: doc2.data()['phone_number'],
                                                     pet_name: val['pet_name'],

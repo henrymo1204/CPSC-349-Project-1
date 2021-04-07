@@ -12,23 +12,6 @@
 
     Account.prototype.getUserInfo = function(key, fn) {
         this.db.getUser(key, fn);
-
-        // console.log(key);
-        // this.db.getUser(key, fn);
-        // var file = firebase.firestore();
-        // var docRef = file.collection('users').doc(key);
-
-        // docRef.get().then((doc) => {
-        //     if (doc.exists) {
-        //         console.log(doc.data());
-        //         fn(doc.data());
-        //     }
-        //     else {
-        //         console.log('not exist;');
-        //     }
-        // }).catch((error) => {
-        //     console.log(error);
-        // })
     }
 
     Account.prototype.setUserInfo = function(key, data) {

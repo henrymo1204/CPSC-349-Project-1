@@ -27,9 +27,12 @@ html,body{
 
     width:50%;
     min-width:fit-content;
-
-    align-items: center;
-
+    
 }
 
+.row-form img{  
+    margin-top: 10px;
+    margin-left: 100px;
+    vertical-align: top;
+}
 
