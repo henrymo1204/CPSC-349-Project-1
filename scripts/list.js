@@ -43,7 +43,7 @@
     List.prototype.pictures = function(pictures) {
         console.log(pictures);
         for (var key in pictures) {
-            var picture = new Picture(key);
+            new Picture(key);
         }
     }
 

@@ -128,39 +128,67 @@
         }
 
         setAppointment(key, targetKey, val) {
-            this.db.collection('users').doc(key).get()
-                .then((doc1) => {
-                    if (doc1.exists) {
-                        this.db.collection('users').doc(targetKey).collection('appointments').add({
-                            user_name: doc1.data()['user_name'],
-                            phone_number: doc1.data()['phone_number'],
-                            pet_name: val['pet_name'],
-                            location: val['location'],
-                            date: val['date'],
-                            time: val['time']
-                        })
-                        .then((response) => {
-                            console.log(response.id);
-                            console.log('Document successfully written!');
-                            this.db.collection('users').doc(targetKey).get()
-                                .then((doc2) => {
-                                    if (doc2.exists) {
-                                        this.db.collection('users').doc(key).collection('appointments').doc(response.id).set({
-                                            user_name: doc2.data()['user_name'],
-                                            phone_number: doc2.data()['phone_number'],
-                                            pet_name: val['pet_name'],
-                                            location: val['location'],
-                                            date: val['date'],
-                                            time: val['time']
-                                    })
-                                    .then(() => {
-                                        console.log('Document successfully written!');
-                                        $('#ex1').html("<p>Appointment Set Up Successfully!</p><a rel='modal:close'><button id=close>Close</button></a>");
-                                        $("#ex1").modal("show");
-                                        $('#close').on("click", function() {
-                                            document.cookie = 'pictureKey=' + targetKey + ';expires=Tues, 06 April 2021 00:00:00 PST';
-                                            window.close();
-                                        });
+            this.db.collection('users').doc(key).collection('time').get()
+                .then((doc) => {
+                    var exist = false;
+                    doc.forEach(document => {
+                        if (document.data().date === val['date'] && document.data().time === val['time']) {
+                            exist = true;
+                        }
+                    });
+                    if (exist === false) {
+                        this.db.collection('users').doc(key).get()
+                        .then((doc1) => {
+                            if (doc1.exists) {
+                                this.db.collection('users').doc(targetKey).collection('appointments').add({
+                                    user_name: doc1.data()['user_name'],
+                                    phone_number: doc1.data()['phone_number'],
+                                    pet_name: val['pet_name'],
+                                    location: val['location'],
+                                    date: val['date'],
+                                    time: val['time']
+                                })
+                                .then((response) => {
+                                    console.log(response.id);
+                                    console.log('Document successfully written!');
+                                    this.db.collection('users').doc(targetKey).collection('time').add({
+                                        date: val['date'],
+                                        time: val['time']
+                                    });
+                                    this.db.collection('users').doc(targetKey).get()
+                                        .then((doc2) => {
+                                            if (doc2.exists) {
+                                                this.db.collection('users').doc(key).collection('appointments').doc(response.id).set({
+                                                    user_name: doc2.data()['user_name'],
+                                                    phone_number: doc2.data()['phone_number'],
+                                                    pet_name: val['pet_name'],
+                                                    location: val['location'],
+                                                    date: val['date'],
+                                                    time: val['time']
+                                            })
+                                            .then(() => {
+                                                console.log('Document successfully written!');
+                                                this.db.collection('users').doc(key).collection('time').add({
+                                                    date: val['date'],
+                                                    time: val['time']
+                                                });
+                                                $('#ex1').html("<p>Appointment Set Up Successfully!</p><a rel='modal:close'><button id=close>Close</button></a>");
+                                                $("#ex1").modal("show");
+                                                $('#close').on("click", function() {
+                                                    document.cookie = 'pictureKey=' + targetKey + ';expires=Tues, 06 April 2021 00:00:00 PST';
+                                                    window.close();
+                                                });
+                                            })
+                                            .catch((error) => {
+                                                var errorCode = error.code;
+                                                var errorMessage = error.message;
+                                                console.log(errorCode);
+                                                console.log(errorMessage);
+                                            });
+                                        }
+                                        else {
+                                            console.log('No such document!');
+                                        }
                                     })
                                     .catch((error) => {
                                         var errorCode = error.code;
@@ -168,17 +196,17 @@
                                         console.log(errorCode);
                                         console.log(errorMessage);
                                     });
-                                }
-                                else {
-                                    console.log('No such document!');
-                                }
-                            })
-                            .catch((error) => {
-                                var errorCode = error.code;
-                                var errorMessage = error.message;
-                                console.log(errorCode);
-                                console.log(errorMessage);
-                            });
+                                })
+                                .catch((error) => {
+                                    var errorCode = error.code;
+                                    var errorMessage = error.message;
+                                    console.log(errorCode);
+                                    console.log(errorMessage);
+                                });
+                            }
+                            else {
+                                console.log('No such document!');
+                            }
                         })
                         .catch((error) => {
                             var errorCode = error.code;
@@ -188,14 +216,9 @@
                         });
                     }
                     else {
-                        console.log('No such document!');
+                        $('#ex1').html("<p>Your pet already got a play date at this time.</p><a rel='modal:close'><button id=close>Close</button></a>");
+                        $("#ex1").modal("show");
                     }
-                })
-                .catch((error) => {
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    console.log(errorCode);
-                    console.log(errorMessage);
                 });
         }
 
