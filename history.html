@@ -1,6 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link  rel="stylesheet" href="styles/history.css">
     </head>
     <body>
         <nav class="navbar navbar-light justify-content-between" style="background-color: #e3f2fd;">
@@ -18,15 +19,18 @@
               <a class="nav-link active" href="history.html">Play Date History</a>
             </li>
         </ul>
-        <div class="pannel pannel">
-            <div class="panel-body">
-                <form>
-                    <h1>Play Dates:</h1>
-                    <div data-play-dates="list">
-                </form>
+        <div class="main-container">
+            <div class="pannel pannel">
+
+                <div class="panel-body">
+                        <h1 id="header">Play Dates:</h1>
+                        <div id="content"> 
+                            <div data-play-dates="list" >
+
+                            </div>
+                        </div>
                 </div>
             </div>
-        </div>
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
 

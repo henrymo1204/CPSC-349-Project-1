@@ -244,7 +244,7 @@
         }
 
         getAppointments(key, cb) {
-            this.db.collection('users').doc(key).collection('appointments').orderBy('time').get()
+            this.db.collection('users').doc(key).collection('appointments').get()
                 .then((doc) => {
                     var data = [];
                     doc.forEach(document => {

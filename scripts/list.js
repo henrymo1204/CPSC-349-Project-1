@@ -16,27 +16,29 @@
 
     List.prototype.init = function (playDates) {
         for (var key in playDates) {
-            var time = playDates[key]['time'];
+            var appointment = playDates[key];
             var id = key;
-            var rowElement = new Row(time, id);
+            var rowElement = new Row(appointment, id);
             this.$element.append(rowElement.$element);
         }
+        console.log(document.getElementById('content'));
     }
 
-    function Row(time, id) {
-        var $div = $('<div></div>', {
-            'data-play-dates': 'checkbox', class: 'checkbox'
+    function Row(appointment, id) {
+        var $div = $('<form></form>', {
+            class: 'row-form'
         });
 
         var $label = $('<label></label>', {
             value: id
         })
 
-        var description = 'Play date # ' + id + ' Time: ' + time;
+        var description = 'Date: ' + appointment.date + '<br></br> Time: ' + appointment.time + '<br></br> Location: ' + appointment.location + '<br></br> User Name: ' 
+                                   + appointment.user_name + '<br></br> Pet Name: ' + appointment.pet_name + '<br></br> Phone Number: ' + appointment.phone_number;
 
         $label.append(description);
         $div.append($label);
-
+        
         this.$element = $div;
     }
 
