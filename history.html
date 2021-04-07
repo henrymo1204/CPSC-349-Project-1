@@ -6,8 +6,8 @@
         <nav class="navbar navbar-light justify-content-between" style="background-color: #e3f2fd;">
             <a class="navbar-brand" href="main.html">Home</a>
             <form class="form-inline">
-                <button class="btn btn-outline-success mr-sm-2" type="submit">Sign Up</button>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log In</button>
+                <a href='userAccount.html' class="btn btn-outline-success mr-sm-2" type="submit">Account</a>
+                <a href='login.html' button class="btn btn-outline-success my-2 my-sm-0" type="exit" onclick='logOut()'>Log Out</a>
             </form>
         </nav>
         <ul class="nav nav-tabs">
@@ -35,6 +35,11 @@
                     var KEY = cookie[i].substring(index + 1);
                     break;
                 }
+            }
+        </script>
+        <script>
+            function logOut() {
+                document.cookie = 'key=' + KEY + ';expires=Tues, 06 April 2021 00:00:00 PST';
             }
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>

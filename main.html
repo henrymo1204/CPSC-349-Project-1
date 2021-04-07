@@ -6,8 +6,8 @@
         <nav class="navbar navbar-light justify-content-between" style="background-color: #e3f2fd;">
             <a class="navbar-brand" href="#">Home</a>
             <form class="form-inline">
-                <button class="btn btn-outline-success mr-sm-2" type="submit" href="signup.html">Sign Up</button>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" href="login.html">Log In</button>
+                <a href='userAccount.html' class="btn btn-outline-success mr-sm-2" type="submit">Account</a>
+                <a href='login.html' button class="btn btn-outline-success my-2 my-sm-0" type="exit" onclick='logOut()'>Log Out</a>
             </form>
         </nav>
             <div data-play-dates="list"></div>
@@ -51,7 +51,12 @@
         <script>
             function openReservation(input){
                 document.cookie = 'pictureKey=' + input.id;
-                window.open('index.html', 'popUpWindow', 'height=500, width=350');
+                window.open('appointment.html', 'popUpWindow', 'height=500, width=350');
+            }
+        </script>
+        <script>
+            function logOut() {
+                document.cookie = 'key=' + KEY + ';expires=Tues, 06 April 2021 00:00:00 PST';
             }
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>

@@ -112,6 +112,7 @@
                             $('#ex1').html("<p>Appointment Set Up Successfully!</p><a rel='modal:close'><button id=close>Close</button></a>");
                             $("#ex1").modal("show");
                             $('#close').on("click", function() {
+                                document.cookie = 'pictureKey=' + targetKey + ';expires=Tues, 06 April 2021 00:00:00 PST';
                                 window.close();
                             });
                         },

@@ -25,8 +25,10 @@
                 console.log(item.name + ' is ' + item.value);
             });
             var file = document.getElementById('mediaCapture').files[0];
-            var storageRef = firebase.storage().ref(KEY);
-            storageRef.put(file);
+            if(file !== undefined) {
+                var storageRef = firebase.storage().ref(KEY);
+                storageRef.put(file);
+            }
             if (document.getElementById('time1').checked === true) {
                 fields['10'] = {'booleanValue': true};
             }
