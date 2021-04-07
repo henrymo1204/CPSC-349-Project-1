@@ -19,65 +19,62 @@
         this.$formElement.on('submit', function (event) {
             event.preventDefault();
           
-            var fields = {};
+            var data = {};
             $(this).serializeArray().forEach(function(item) {
-                fields[item.name] = {'stringValue': item.value};
+                data[item.name] = item.value;
                 console.log(item.name + ' is ' + item.value);
             });
             var file = document.getElementById('mediaCapture').files[0];
-            if(file !== undefined) {
-                var storageRef = firebase.storage().ref(KEY);
-                storageRef.put(file);
-            }
+            data['image'] = file;
+            console.log(file);
             if (document.getElementById('time1').checked === true) {
-                fields['10'] = {'booleanValue': true};
+                data['10'] = true;
             }
             else {
-                fields['10'] = {'booleanValue': false};
+                data['10'] = false;
             }
             if (document.getElementById('time2').checked === true) {
-                fields['11'] = {'booleanValue': true};
+                data['11'] = true;
             }
             else {
-                fields['11'] = {'booleanValue': false};
+                data['11'] = false;
             }
             if (document.getElementById('time3').checked === true) {
-                fields['12'] = {'booleanValue': true};
+                data['12'] = true;
             }
             else {
-                fields['12'] = {'booleanValue': false};
+                data['12'] = false;
             }
             if (document.getElementById('time4').checked === true) {
-                fields['13'] = {'booleanValue': true};
+                data['13'] = true;
             }
             else {
-                fields['13'] = {'booleanValue': false};
+                data['13'] = false;
             }
             if (document.getElementById('time5').checked === true) {
-                fields['14'] = {'booleanValue': true};
+                data['14'] = true;
             }
             else {
-                fields['14'] = {'booleanValue': false};
+                data['14'] = false;
             }
             if (document.getElementById('time6').checked === true) {
-                fields['15'] = {'booleanValue': true};
+                data['15'] = true;
             }
             else {
-                fields['15'] = {'booleanValue': false};
+                data['15'] = false;
             }
             if (document.getElementById('time7').checked === true) {
-                fields['16'] = {'booleanValue': true};
+                data['16'] = true;
             }
             else {
-                fields['16'] = {'booleanValue': false};
+                data['16'] = false;
             }
             if (document.getElementById('time8').checked === true) {
-                fields['17'] = {'booleanValue': true};
+                data['17'] = true;
             }
             else {
-                fields['17'] = {'booleanValue': false};
+                data['17'] = false;
             }
-            var data = {'fields': fields};
             console.log(data);
             fn(data);
         });
@@ -107,8 +104,6 @@
             var data = {};
             data['email'] = document.getElementById('emailAddress').value;
             data['password'] = document.getElementById('password').value;
-            data['returnSecureToken'] = true;
-            console.log(data);
             fn(data);
         });
     };
@@ -118,12 +113,11 @@
         this.$formElement.on('submit', function (event) {
             event.preventDefault();
           
-            var fields = {};
-            fields['pet_name'] = {'stringValue': document.getElementById('PetName').value};
-            fields['location'] = {'stringValue': document.getElementById('Location').value};
-            fields['date'] = {'stringValue': document.getElementById('AvailableDate').value};
-            fields['time'] = {'stringValue': document.getElementById('AvailableTime').value};
-            var data = {'fields': fields};
+            var data = {};
+            data['pet_name'] = document.getElementById('PetName').value;
+            data['location'] = document.getElementById('Location').value;
+            data['date'] = document.getElementById('AvailableDate').value;
+            data['time'] = document.getElementById('AvailableTime').value;
             console.log(data);
             fn(data);
         });

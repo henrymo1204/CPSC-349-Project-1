@@ -15,9 +15,9 @@
     };
 
     List.prototype.init = function (playDates) {
-        for (let i in playDates) {
-            var time = playDates[i]['fields']['time']['timestampValue'];
-            var id = playDates[i]['name'];
+        for (var key in playDates) {
+            var time = playDates[key]['time'];
+            var id = key;
             var rowElement = new Row(time, id);
             this.$element.append(rowElement.$element);
         }
@@ -32,9 +32,7 @@
             value: id
         })
 
-        var lastIndex = id.lastIndexOf('/');
-
-        var description = 'Play date # ' + id.substring(lastIndex + 1) + ' Time: ' + time;
+        var description = 'Play date # ' + id + ' Time: ' + time;
 
         $label.append(description);
         $div.append($label);
@@ -43,17 +41,14 @@
     }
 
     List.prototype.pictures = function(pictures) {
-        for (let i in pictures) {
-            var picture = new Picture(pictures[i]);
-            this.$element.append(picture.$element);
+        console.log(pictures);
+        for (var key in pictures) {
+            var picture = new Picture(key);
         }
     }
 
     function Picture(key) {
         var storageRef = firebase.storage().ref();
-        var $div = $('<div></div>', {
-            'data-play-dates': 'img', class: 'img'
-        });
         storageRef.child(key).getDownloadURL()
             .then((url) => {
                 // `url` is the download URL for 'images/stars.jpg'
@@ -66,21 +61,15 @@
                 };
                 xhr.open('GET', url);
 
-                // Or inserted into an <img> element
+                images.push({key: key, url: url});
+                console.log(images);
 
-                var $img = $('<img></img>', {
-                    id: key, 
-                    src: url,
-                    onClick: 'openReservation(this)'
-                });
-
-                $div.append($img);
+                document.getElementById('center_image').setAttribute('src', images[counter].url);
 
             })
             .catch((error) => {
                 console.log(error);
             });
-        this.$element = $div;
     }
 
     App.List = List;

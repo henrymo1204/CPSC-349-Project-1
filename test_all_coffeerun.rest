@@ -39,16 +39,8 @@ Content-Type: application/json
 ###
 
 # add new order for triple espresso
-PATCH {{baseUrl}}/users/hg5XEcZubvcCQvPnl6MhWB5vTln2 HTTP/1.1
+GET {{baseUrl}}/users/eEjz702RqucX9yvyWM2FwocYLbG3/appointments HTTP/1.1
 content-type: application/json
-
-{
-    "fields": {
-        "user_name": {
-            "stringValue": "Calvin"
-        }
-    }
-}
 
 ###
 POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyB7gYphY-KI0365iPlSfniI0U6uyb8lUcg HTTP/1.1

@@ -1,23 +1,41 @@
 <html>
     <head>
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles/main.css">
     </head>
-    <body>
-        <nav class="navbar navbar-light justify-content-between" style="background-color: #e3f2fd;">
+    <body class ="main-body">
+        <nav class="navbar navbar-light justify-content-between" style="background-color: #9CD1F8;">
             <a class="navbar-brand" href="#">Home</a>
             <form class="form-inline">
                 <a href='userAccount.html' class="btn btn-outline-success mr-sm-2" type="submit">Account</a>
                 <a href='login.html' button class="btn btn-outline-success my-2 my-sm-0" type="exit" onclick='logOut()'>Log Out</a>
             </form>
         </nav>
-            <div data-play-dates="list"></div>
-        </div>
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <main class="main-content" > 
+
+            <ul class="thumbnail-list" data-play-dates="list"></ul>
+
+            <div class="detail-image-container">
+
+                <button type="button" class="cycleImages" onClick='prevImg()'>Prev</button>
+    
+                <div class="detail-image-frame" data-image-role="frame">
+                    <img class="detail-image" data-image-role="target" id='center_image' width=800 height=400 onClick='openReservation()'>
+                </div> <!-- end of detail-image-frame-->
+
+                <button type="button" class="cycleImages" onClick='nextImg()'>Next</button>
+            </div> <!-- end of detail-image-container-->
+        </main>
         <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
 
         <!-- TODO: Add SDKs for Firebase products that you want to use
             https://firebase.google.com/docs/web/setup#available-libraries -->
         <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
 
         <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-storage.js"></script>
         <script>
@@ -50,7 +68,7 @@
         </script>
         <script>
             function openReservation(input){
-                document.cookie = 'pictureKey=' + input.id;
+                document.cookie = 'pictureKey=' + images[counter].key;
                 window.open('appointment.html', 'popUpWindow', 'height=500, width=350');
             }
         </script>
@@ -58,6 +76,31 @@
             function logOut() {
                 document.cookie = 'key=' + KEY + ';expires=Tues, 06 April 2021 00:00:00 PST';
             }
+
+            function nextImg() {
+                if (counter === 0) {
+                    counter = images.length - 1;
+                    console.log('prev');
+                }
+                else {
+                    counter = counter - 1;
+                }
+                document.getElementById('center_image').setAttribute('src', images[counter].url);
+            }
+            function nextImg() {
+                if (counter === images.length - 1) {
+                    counter = 0;
+                    console.log('next');
+                }
+                else {
+                    counter = counter + 1;
+                }
+                document.getElementById('center_image').setAttribute('src', images[counter].url);
+            }
+        </script>
+        <script>
+            var images = [];
+            var counter = 0;
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>
         <script src='/scripts/list.js'></script>

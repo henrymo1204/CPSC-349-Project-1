@@ -1,10 +1,9 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link  rel="stylesheet" href="styles/history.css">
     </head>
     <body>
-        <nav class="navbar navbar-light justify-content-between" style="background-color: rgb(226, 242, 253);">
+        <nav class="navbar navbar-light justify-content-between" style="background-color: #e3f2fd;">
             <a class="navbar-brand" href="main.html">Home</a>
             <form class="form-inline">
                 <a href='userAccount.html' class="btn btn-outline-success mr-sm-2" type="submit">Account</a>
@@ -13,39 +12,60 @@
         </nav>
         <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a class="nav-link" href="userAccount.html" id="nav">Account Information</a>
+              <a class="nav-link" href="userAccount.html">Account Information</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="history.html" id="current">Play Date History</a>
+              <a class="nav-link active" href="history.html">Play Date History</a>
             </li>
         </ul>
-        <div class="main-container">
-            <div class="pannel pannel">
-
-                <div class="panel-body">
-                    <form>
-                        <h1 id="header">Play Dates:</h1>
-                        <div id="content"> 
-                            <div data-play-dates="list" >
-                              
-                            </div>
-                        </div>
-                    </form>
+        <div class="pannel pannel">
+            <div class="panel-body">
+                <form>
+                    <h1>Play Dates:</h1>
+                    <div data-play-dates="list">
+                </form>
                 </div>
             </div>
-            <div >
-                <script>
-                    var cookie = document.cookie.split(';');
-                    for (let i in cookie) {
-                        if (cookie[i].includes('key=')) {
-                            var index = cookie[i].lastIndexOf('=');
-                            var KEY = cookie[i].substring(index + 1);
-                            break;
-                        }
-                    }
-                </script>
-            </div>
         </div>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-storage.js"></script>
+        <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyB7gYphY-KI0365iPlSfniI0U6uyb8lUcg",
+            authDomain: "project1-d755b.firebaseapp.com",
+            databaseURL: "https://project1-d755b-default-rtdb.firebaseio.com",
+            projectId: "project1-d755b",
+            storageBucket: "project1-d755b.appspot.com",
+            messagingSenderId: "78036485735",
+            appId: "1:78036485735:web:4512e85d19b9b41cadf6c2",
+            measurementId: "G-EMP5CX9EXP"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        </script>
+        <script>
+            var cookie = document.cookie.split(';');
+            for (let i in cookie) {
+                if (cookie[i].includes('key=')) {
+                    var index = cookie[i].lastIndexOf('=');
+                    var KEY = cookie[i].substring(index + 1);
+                    break;
+                }
+            }
+        </script>
         <script>
             function logOut() {
                 document.cookie = 'key=' + KEY + ';expires=Tues, 06 April 2021 00:00:00 PST';
