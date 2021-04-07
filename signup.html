@@ -21,21 +21,29 @@
                 <h1>Sign-up</h1>
                 <hr>
                 <div>
+                    <!-- Takes the User's Email address they wish to associate with the account-->
                     <label for="emailInput"><b>Email</b></label>
                     <input type="email" placeholder="Enter Email" name="emailAddress" id='emailAddress' value="" required>
                 </div>
                 <div>
+                    <!-- Takes the User's Password they wish to use when logging in to the account -->
                     <label for="psw"><b>Password</b></label>
                     <input type="password" placeholder="Enter Password" name="psw" id="password" required>
                 </div>
                 <div>
+                    <!-- Ask's the user to re-enter the password to confirm they inputed is what they intended. 
+                            If the two passwords do not match, they will not be able to sign up until they are -->
                     <label for="conf-psw"><b>Confirm Password</b></label>
                     <input type="password" placeholder="Confirm Password" id="confirm_password" name="conf-psw" required>
                 </div>
+                <!-- When the submit button, and both the email and passwords are valid, will take the information supplied and send 
+                        them to the database to create a new account -->
                 <div class="clearfix">
                     <button type="submit" class="signupbtn">Sign Up</button>
                 </div>
                 <hr>
+                <!-- IF the user accidentally went to the sign-up page when they already have an account, this will send them to the 
+                        log-in page -->
                 <p> Already have an account?  <a href="login.html" style="color:blue">Log-in</a></p>
 
             
