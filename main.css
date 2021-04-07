@@ -1,0 +1,79 @@
+html, body {
+    height: 100%;
+}
+
+.main-header {
+    flex: 0 1 auto;
+    display:flex;
+    justify-content: center;
+    justify-content: center;
+    align-items: center;
+    color: #9CD1F8;
+    text-shadow:  rgba(0, 0, 0, 0.5) 1px 2px 1px;
+    font-size: 150px;
+}
+
+.main-body {
+    display: flex;
+    font-size: 10px;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1 1 auto;
+    display:flex;
+    flex-direction: column;
+}
+
+
+
+.detail-image-container {
+    padding: 20px;
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.detail-image-frame {
+    position: relative;
+    text-align: center;
+    border-color: #9CD1F8;
+    
+    transition: transform 333ms;
+    
+}
+
+
+.detail-image-frame:hover {
+    transform: scale(1.2);
+    transition: transform 200ms;
+}
+
+.detail-image-title {
+    position: absolute;
+    bottom: -16px;
+    left: 4px;
+
+    color: white;
+    text-shadow: rgba(0, 0, 0, 0.9) 1px 2px 9px;
+    font-size: 40px;
+}
+
+.cycleImages {
+    font-size: 50px;
+    background-color: #9CD1F8;
+    border-style:outset;
+    border-radius: 20px;
+    border-color: #9CD1F8;
+    color: white;
+    text-shadow:  rgba(0, 0, 0, 0.5) 1px 2px 1px;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+
+.cycleImages:hover {
+    transform: scale(1.2);
+    transition: transform 200ms;
+}
