@@ -1,9 +1,10 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link  rel="stylesheet" href="styles/history.css">
     </head>
     <body>
-        <nav class="navbar navbar-light justify-content-between" style="background-color: #e3f2fd;">
+        <nav class="navbar navbar-light justify-content-between" style="background-color: rgb(226, 242, 253);">
             <a class="navbar-brand" href="main.html">Home</a>
             <form class="form-inline">
                 <a href='userAccount.html' class="btn btn-outline-success mr-sm-2" type="submit">Account</a>
@@ -12,31 +13,39 @@
         </nav>
         <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a class="nav-link" href="userAccount.html">Account Information</a>
+              <a class="nav-link" href="userAccount.html" id="nav">Account Information</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="history.html">Play Date History</a>
+              <a class="nav-link active" href="history.html" id="current">Play Date History</a>
             </li>
         </ul>
-        <div class="pannel pannel">
-            <div class="panel-body">
-                <form>
-                    <h1>Play Dates:</h1>
-                    <div data-play-dates="list">
-                </form>
+        <div class="main-container">
+            <div class="pannel pannel">
+
+                <div class="panel-body">
+                    <form>
+                        <h1 id="header">Play Dates:</h1>
+                        <div id="content"> 
+                            <div data-play-dates="list" >
+                              
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
+            <div >
+                <script>
+                    var cookie = document.cookie.split(';');
+                    for (let i in cookie) {
+                        if (cookie[i].includes('key=')) {
+                            var index = cookie[i].lastIndexOf('=');
+                            var KEY = cookie[i].substring(index + 1);
+                            break;
+                        }
+                    }
+                </script>
+            </div>
         </div>
-        <script>
-            var cookie = document.cookie.split(';');
-            for (let i in cookie) {
-                if (cookie[i].includes('key=')) {
-                    var index = cookie[i].lastIndexOf('=');
-                    var KEY = cookie[i].substring(index + 1);
-                    break;
-                }
-            }
-        </script>
         <script>
             function logOut() {
                 document.cookie = 'key=' + KEY + ';expires=Tues, 06 April 2021 00:00:00 PST';
