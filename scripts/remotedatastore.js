@@ -23,6 +23,11 @@
                     this.db.collection('users').doc(id).set({})
                         .then(() => {
                             console.log('Document successfully written!');
+                            $('#ex1').html("<p>Sign Up Successfully!</p><a rel='modal:close'><button id=close>Close</button></a>");
+                            $("#ex1").modal("show");
+                            $('#close').on("click", function() {
+                                window.location.href='index.html';
+                            });
                         })
                         .catch((error) => {
                             console.log('Error writing document: ', error);
@@ -49,6 +54,8 @@
                     var errorMessage = error.message;
                     console.log(errorCode);
                     console.log(errorMessage);
+                    $('#ex1').html("<p>" + errorMessage + "</p><a rel='modal:close'><button id=close>Close</button></a>");
+                    $("#ex1").modal("show");
                 });
         }
 
@@ -67,18 +74,45 @@
                 '15': data['15'],
                 '16': data['16'],
                 '17': data['17'],
+            })
+            .then(() => {
+                if(data['image'] !== undefined) {
+                    this.storage.ref(KEY).put(data['image'])
+                        .then(() => {
+                            $('#ex1').html("<p>Saved!</p><a rel='modal:close'><button id=close>Close</button></a>");
+                            $("#ex1").modal("show");
+                        })
+                        .catch((error) => {
+                            var errorCode = error.code;
+                            var errorMessage = error.message;
+                            console.log(errorCode);
+                            console.log(errorMessage);
+                        });
+                }
+                else {
+                    $('#ex1').html("<p>Saved!</p><a rel='modal:close'><button id=close>Close</button></a>");
+                    $("#ex1").modal("show");
+                }
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log(errorCode);
+                console.log(errorMessage);
             });
-            if(data['image'] !== undefined) {
-                this.storage.ref(KEY);
-                storageRef.put(file);
-            }
         }
 
         getUser(key, cb) {
             this.db.collection('users').doc(key).get()
                 .then((doc) => {
                     if (doc.exists) {
-                        this.storage.ref().child(key).getDownloadURL()
+                        console.log(doc.data());
+                        if (Object.keys(doc.data()).length === 0 && doc.data().constructor === Object) {
+                            var account_number = document.getElementById("AccountNumber");
+                            account_number.value = KEY;
+                        }
+                        else {
+                            this.storage.ref().child(key).getDownloadURL()
                             .then((url) => {
                                 // `url` is the download URL for 'images/stars.jpg'
                 
@@ -99,8 +133,9 @@
                             })
                             .catch((error) => {
                                 console.log(error);
+                                cb(doc.data());
                             });
-
+                        }
                     }
                     else {
                         console.log('No such document!');

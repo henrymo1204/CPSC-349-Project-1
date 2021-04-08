@@ -5,6 +5,7 @@
         <title>Account</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta2/css/bootstrap-grid.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
         <style>
             form :focus:required:invalid{
                 border-color: #a94442
@@ -16,7 +17,7 @@
             <a class="navbar-brand" href="main.html">Home</a>
             <form class="form-inline">
                 <a href='userAccount.html' class="btn btn-outline-success mr-sm-2" type="submit">Account</a>
-                <a href='login.html' button class="btn btn-outline-success my-2 my-sm-0" type="exit" onclick='logOut()'>Log Out</a>
+                <a href='index.html' button class="btn btn-outline-success my-2 my-sm-0" type="exit" onclick='logOut()'>Log Out</a>
             </form>
         </nav>
         <ul class="nav nav-tabs">
@@ -99,6 +100,10 @@
             </div>
 
         </section>  
+        <div id="ex1" class="modal">
+            <p></p>
+            <a href="#" rel="modal:close"><button>Close</button></a>
+        </div>
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
 
@@ -128,14 +133,19 @@
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
 
+        var KEY
 
         var cookie = document.cookie.split(';');
         for (let i in cookie) {
             if (cookie[i].includes('key=')) {
                 var index = cookie[i].lastIndexOf('=');
-                var KEY = cookie[i].substring(index + 1);
+                KEY = cookie[i].substring(index + 1);
                 break;
             }
+        }
+
+        if (KEY === undefined) {
+            window.location.replace('index.html');
         }
 
         function readURL(input) {
@@ -159,6 +169,7 @@
             }
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js" charset="utf-8"></script>
         <script src="scripts/account.js" charset="utf-8"></script>
         <script src="scripts/remotedatastore.js" charset="utf-8"></script>
         <script src="scripts/formhandler.js" charset="utf-8"></script>

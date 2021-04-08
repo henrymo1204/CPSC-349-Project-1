@@ -97,16 +97,21 @@
         firebase.analytics();
         </script>
         <script>
+            var KEY;
             var cookie = document.cookie.split(';');
             for (let i in cookie) {
                 if (cookie[i].includes('key=')) {
                     var index = cookie[i].lastIndexOf('=');
-                    var KEY = cookie[i].substring(index + 1);
+                    KEY = cookie[i].substring(index + 1);
                 }
                 if (cookie[i].includes('pictureKey=')) {
                     var index = cookie[i].lastIndexOf('=');
                     var PICTURE_KEY = cookie[i].substring(index + 1);
                 }
+            }
+            
+            if (KEY === undefined) {
+                window.location.replace('index.html');
             }
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>

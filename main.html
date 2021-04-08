@@ -9,7 +9,7 @@
             <a class="navbar-brand" href="#">Home</a>
             <form class="form-inline">
                 <a href='userAccount.html' class="btn btn-outline-success mr-sm-2" type="submit">Account</a>
-                <a href='login.html' button class="btn btn-outline-success my-2 my-sm-0" type="exit" onclick='logOut()'>Log Out</a>
+                <a href='index.html' button class="btn btn-outline-success my-2 my-sm-0" type="exit" onclick='logOut()'>Log Out</a>
             </form>
         </nav>
 
@@ -61,14 +61,20 @@
         </script>
 
         <script>
+            var KEY
+
             var cookie = document.cookie.split(';');
             for (let i in cookie) {
                 if (cookie[i].includes('key=')) {
                     var index = cookie[i].lastIndexOf('=');
-                    var KEY = cookie[i].substring(index + 1);
+                    KEY = cookie[i].substring(index + 1);
                     break;
                 }
             }
+
+            if (KEY === undefined) {
+                window.location.replace('index.html');
+            }   
         </script>
         <script>
             function openReservation(input){
@@ -107,9 +113,9 @@
             var counter = 0;
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>
-        <script src='/scripts/list.js'></script>
-        <script src='/scripts/remotedatastore.js'></script>
-        <script src='/scripts/account.js'></script>
-        <script src='/scripts/main.js'></script>
+        <script src='scripts/list.js' charset="utf-8"></script>
+        <script src='scripts/remotedatastore.js' charset="utf-8"></script>
+        <script src='scripts/account.js' charset="utf-8"></script>
+        <script src='scripts/main.js' charset="utf-8"></script>
     </body>
 </html>
