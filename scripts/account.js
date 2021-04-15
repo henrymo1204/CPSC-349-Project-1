@@ -78,7 +78,7 @@
     }
 
     Account.prototype.listPictures = function(key, fn) {
-        this.db.getAll(key, fn);
+        this.db.getAllPictures(key, fn);
     }
 
     Account.prototype.setAppointmentInfo = function(info) {

@@ -13,9 +13,6 @@ html,body{
     margin-right:10%;
 }
 
-
-
-
 .row-form{
     /*background-color:green;*/
     margin-left:25%;
@@ -25,14 +22,27 @@ html,body{
     border-radius: 25px;
     border:3px solid rgba(74, 116, 119, 0.3);
 
-    width:50%;
+    width: 50%;
     min-width:fit-content;
-    
+    margin-top: 20px;
 }
 
 .row-form img{  
     margin-top: 10px;
     margin-left: 100px;
     vertical-align: top;
+}
+
+.row-form label{
+    margin-top: 10px;
+    margin-left: 60px;
+}
+
+.row-form button{
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: block;
+    width: 200px;
+    margin: 10px auto 0px auto;
 }
 
